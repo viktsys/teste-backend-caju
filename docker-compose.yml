@@ -1,0 +1,9 @@
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: backendcaju
+      POSTGRES_USER: caju
+      POSTGRES_PASSWORD: cajuina
+    ports:
+        - "5432:5432"
