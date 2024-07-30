@@ -1,7 +1,6 @@
 package io.github.viktsys.backendtestcaju.services
 
 import io.github.viktsys.backendtestcaju.models.MerchantCodeChargeability
-import io.github.viktsys.backendtestcaju.models.enums.ChargeType
 import io.github.viktsys.backendtestcaju.repositories.MerchantCodeChargeabilityRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service

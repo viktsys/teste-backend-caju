@@ -76,8 +76,9 @@ class TransactionService {
         // Define the ChargeType based on the Merchant Name or Merchant Code
         // Check if the account is chargeable based on type of balance to be used
         // By business logic, always fallback on CASH balance if the other balances are insufficient
-        var chargeType: ChargeType = ChargeType.CASH
-        var isChargeable = false
+        var chargeType: ChargeType?
+        var isChargeable: Boolean?
+
         if(merchantNameChargeability != null) {
             chargeType = merchantNameChargeability.chargeType
             isChargeable = accountService.isChargeable(account, data.totalAmount, chargeType)

@@ -2,7 +2,6 @@ package io.github.viktsys.backendtestcaju.controllers
 
 import io.github.viktsys.backendtestcaju.dtos.TransactionDTO
 import io.github.viktsys.backendtestcaju.models.Transaction
-import io.github.viktsys.backendtestcaju.models.enums.TransactionStatus
 import io.github.viktsys.backendtestcaju.services.TransactionService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.validation.annotation.Validated

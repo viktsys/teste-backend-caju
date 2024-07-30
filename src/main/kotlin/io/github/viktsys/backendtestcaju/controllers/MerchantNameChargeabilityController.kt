@@ -1,7 +1,6 @@
 package io.github.viktsys.backendtestcaju.controllers
 
 import io.github.viktsys.backendtestcaju.models.MerchantNameChargeability
-import io.github.viktsys.backendtestcaju.repositories.MerchantNameChargeabilityRepository
 import io.github.viktsys.backendtestcaju.services.MerchantNameChargeabilityService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.*

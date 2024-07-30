@@ -21,10 +21,6 @@ class MerchantNameChargeabilityService {
         return repository.findById(id)
     }
 
-    fun getByCode(code: String): MerchantNameChargeability? {
-        return repository.findByName(code)
-    }
-
     fun getByName(name: String): MerchantNameChargeability? {
         return repository.findByName(name)
     }

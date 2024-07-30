@@ -5,7 +5,6 @@ import io.github.viktsys.backendtestcaju.models.enums.ChargeType
 import io.github.viktsys.backendtestcaju.repositories.AccountRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
-import java.util.*
 
 @Service
 class AccountService {
