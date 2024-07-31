@@ -18,7 +18,7 @@ class TransactionService {
     /* Repository for Transactions */
 
     @Autowired
-    lateinit var transactionRepository: TransactionRepository
+    lateinit var repository: TransactionRepository
 
     /* Service for Merchant Codes and Merchant Names */
 
@@ -32,23 +32,23 @@ class TransactionService {
     lateinit var merchantNameService: MerchantNameChargeabilityService
 
     fun getAll(): List<Transaction> {
-        return transactionRepository.findAll()
+        return repository.findAll()
     }
 
     fun findByID(id: UUID): Optional<Transaction> {
-        return transactionRepository.findById(id)
+        return repository.findById(id)
     }
 
     fun create(transaction: Transaction): Transaction {
-        return transactionRepository.save(transaction)
+        return repository.save(transaction)
     }
 
     fun update(transaction: Transaction): Transaction {
-        return transactionRepository.save(transaction)
+        return repository.save(transaction)
     }
 
     fun deleteByID(id: UUID) {
-        transactionRepository.deleteById(id)
+        repository.deleteById(id)
     }
 
 
@@ -69,7 +69,7 @@ class TransactionService {
             transaction.status = TransactionStatus.REJECTED_BY_UNKNOWN_ERROR
             transaction.chargeType = null
             transaction.account = null
-            transactionRepository.save(transaction)
+            repository.save(transaction)
             return TransactionStatus.REJECTED_BY_UNKNOWN_ERROR
         }
 
@@ -92,12 +92,11 @@ class TransactionService {
             isChargeable = accountService.isChargeable(account, data.totalAmount, chargeType)
         }
 
-        print("ChargeType: $chargeType")
         if(isChargeable) {
             accountService.charge(account, data.totalAmount, chargeType)
             transaction.status = TransactionStatus.ACCEPTED
             transaction.chargeType = chargeType
-            transactionRepository.save(transaction)
+            repository.save(transaction)
             return TransactionStatus.ACCEPTED
         }
         else {
@@ -106,12 +105,12 @@ class TransactionService {
                 accountService.charge(account, data.totalAmount, ChargeType.CASH)
                 transaction.status = TransactionStatus.ACCEPTED
                 transaction.chargeType = ChargeType.CASH
-                transactionRepository.save(transaction)
+                repository.save(transaction)
                 return TransactionStatus.ACCEPTED
             } else {
                 transaction.status = TransactionStatus.REJECTED_BY_INSUFFICIENT_BALANCE
                 transaction.chargeType = chargeType
-                transactionRepository.save(transaction)
+                repository.save(transaction)
                 return TransactionStatus.REJECTED_BY_INSUFFICIENT_BALANCE
             }
         }

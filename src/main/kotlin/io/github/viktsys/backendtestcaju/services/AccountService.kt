@@ -11,18 +11,18 @@ import org.springframework.stereotype.Service
 class AccountService {
 
     @Autowired
-    lateinit var accountRepository: AccountRepository
+    lateinit var repository: AccountRepository
 
     fun getAll(): List<Account> {
-        return accountRepository.findAll()
+        return repository.findAll()
     }
 
     fun findByID(id: Long): Account? {
-        return accountRepository.findById(id).orElse(null)
+        return repository.findById(id).orElse(null)
     }
 
     fun create(account: Account): Account {
-        return accountRepository.save(account)
+        return repository.save(account)
     }
 
     fun create(account: AccountDTO): Account {
@@ -37,11 +37,11 @@ class AccountService {
     }
 
     fun update(account: Account): Account {
-        return accountRepository.save(account)
+        return repository.save(account)
     }
 
     fun deleteByID(id: Long) {
-        accountRepository.deleteById(id)
+        repository.deleteById(id)
     }
 
     fun isChargeable(account: Account, amount: Float, chargeType: ChargeType): Boolean {
@@ -56,15 +56,15 @@ class AccountService {
         when (chargeType) {
             ChargeType.FOOD -> {
                 account.food_balance -= amount
-                return accountRepository.save(account)
+                return repository.save(account)
             }
             ChargeType.MEAL -> {
                 account.meal_balance -= amount
-                return accountRepository.save(account)
+                return repository.save(account)
             }
             ChargeType.CASH -> {
                 account.cash_balance -= amount
-                return accountRepository.save(account)
+                return repository.save(account)
             }
         }
     }
