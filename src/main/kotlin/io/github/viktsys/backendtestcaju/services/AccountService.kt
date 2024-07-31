@@ -1,5 +1,6 @@
 package io.github.viktsys.backendtestcaju.services
 
+import io.github.viktsys.backendtestcaju.dtos.AccountDTO
 import io.github.viktsys.backendtestcaju.models.Account
 import io.github.viktsys.backendtestcaju.models.enums.ChargeType
 import io.github.viktsys.backendtestcaju.repositories.AccountRepository
@@ -22,6 +23,17 @@ class AccountService {
 
     fun create(account: Account): Account {
         return accountRepository.save(account)
+    }
+
+    fun create(account: AccountDTO): Account {
+        return this.create(
+            Account(
+                account.id,
+                account.food_balance,
+                account.meal_balance,
+                account.cash_balance
+            )
+        )
     }
 
     fun update(account: Account): Account {
