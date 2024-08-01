@@ -25,6 +25,7 @@ API para autorização de operações do cartão multi-benefícios da Caju.
 
 ## Observações importantes
 Visto que o foco principal no teste foi dado na implementação da regra de negócio e sua escalabilidade, algumas coisas não foram implementadas:
+- O tratamento do dinheiro/operações financeiras serem feitas utilizando BigDecimal para precisão optimista ou representação de centavos para arrendondamento.
 - Implementação de cache para os modelos usados nas regras de autorização de transação
 - Implementação de cache para as consultas a contas
 
